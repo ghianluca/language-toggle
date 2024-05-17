@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F6EEC9;
+}
+
+.container {
+    width: 50%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #799531;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#page-title {
+    color: #EE4E4E;
+    font-size: 4rem;
+    user-select: none;
+}
+
+.ui-switch-container {
+    position: absolute;
+    top: 50%;
+}
+
+/* Definições iniciais de variáveis CSS para o interruptor */
+.ui-switch {
+    --switch-bg: rgb(135, 150, 165); /* Cor de fundo do interruptor */
+    --switch-width: 48px; /* Largura do interruptor */
+    --switch-height: 20px; /* Altura do interruptor */
+
+    --circle-diameter: 32px; /* Diâmetro do círculo */
+    --circle-bg: trans; /* Cor de fundo do círculo (transparente) */
+    --circle-inset: calc((var(--circle-diameter) - var(--switch-height)) / 2); /* Cálculo para centralizar o círculo verticalmente */
+}
+
+.ui-switch input {
+    display: none; /* Esconde o input padrão */
+}
+
+.slider {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: var(--switch-width); /* Usa a largura definida na variável */
+    height: var(--switch-height); /* Usa a altura definida na variável */
+    background: var(--switch-bg); /* Usa a cor de fundo definida na variável */
+    border-radius: 999px; /* Bordas arredondadas para parecer um pill */
+    position: relative;
+    cursor: pointer; /* Cursor de mãozinha ao passar sobre o slider */
+}
+
+.slider .circle {
+    top: calc(var(--circle-inset) * -1); /* Centraliza o círculo verticalmente */
+    left: 0;
+    width: var(--circle-diameter); /* Usa o diâmetro definido na variável */
+    height: var(--circle-diameter); /* Usa o diâmetro definido na variável */
+    position: absolute;
+    background-color: transparent; /* Fundo transparente inicialmente */
+    border-radius: inherit; /* Bordas arredondadas herdadas do elemento pai */
+    background-image: url(/assets/images/brasil-redondo.png); /* Ícone do Brasil */
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: background-image 0.2s ease-in-out; /* Efeito de transição suave na troca de imagem */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12); /* Sombra para efeito de profundidade */
+}
+
+.ui-switch input:checked + .slider .circle {
+    left: calc(100% - var(--circle-diameter)); /* Move o círculo para a direita quando o input está marcado */
+    background-image: url(/assets/images/eua-redondo.png); /* Troca o ícone para o dos EUA */
+}
+
+.slider .circle::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.75); /* Fundo branco semitransparente */
+    border-radius: inherit;
+    -webkit-transition: all 500ms;
+    -o-transition: all 500ms;
+    transition: all 500ms;
+    opacity: 0; /* Invisível inicialmente */
+}
+
+.ui-switch input:checked + .slider .circle {
+    left: calc(100% - var(--circle-diameter)); /* Move o círculo para a direita quando o input está marcado */
+    background-image: url(/assets/images/eua-redondo.png); /* Troca o ícone para o dos EUA */
+}
+
+.ui-switch input:active + .slider .circle::before {
+    -webkit-transition: 0s;
+    -o-transition: 0s;
+    transition: 0s;
+    opacity: 1; /* Torna visível ao ser clicado */
+    width: 0;
+    height: 0;
+}
+
+@media (max-width: 990px) {
+    .container {
+        width: 85%;
+        height: 60%;
+    }
+
+    #page-title {
+        font-size: 2.1rem;
+    }
+}
